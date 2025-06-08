@@ -19,8 +19,11 @@ jobs:
       - name: Disply python version
         run: python -c "import sys; print(sys.version)"
 
-      - name: pip install
-        run: pip install -r requirements.txt
+      - name: venv and pip install
+        run: |
+            python3 -m venv .venv
+            source ./.venv/bin/actions
+            pip install -r requirements.txt
 
       - name: pytest
         run: pytest .
